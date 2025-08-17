@@ -69,5 +69,22 @@ namespace Library_Management.Controllers
             var book = BookService.Instance.GetBooks().First(b => b.BookId == id);
             return View(book);
         }
+
+        public IActionResult AddCopy(Guid id)
+        {
+            var vm = new AddBookCopyViewModel { BookId = id };
+            return View(vm);
+        }
+
+        [HttpPost]
+        public IActionResult AddCopy(AddBookCopyViewModel vm)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(vm);
+            }
+            BookService.Instance.AddBookCopies(vm);
+            return RedirectToAction("Details", new { id = vm.BookId });
+        }
     }
 }

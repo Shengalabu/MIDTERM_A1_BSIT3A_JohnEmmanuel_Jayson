@@ -250,6 +250,25 @@ public class BookService
         _bookCopies.Add(newBookItem);
     }
 
+    public void AddBookCopies(AddBookCopyViewModel vm)
+    {
+        ArgumentNullException.ThrowIfNull(vm, nameof(vm));
+        var book = _books.FirstOrDefault(b => b.Id == vm.BookId) ?? throw new KeyNotFoundException("Book not found");
+        for (int i = 0; i < vm.NumberOfCopies; i++)
+        {
+            var copy = new BookCopy
+            {
+                Id = Guid.NewGuid(),
+                CoverImageUrl = vm.CoverImageUrl,
+                Condition = vm.Condition,
+                Source = vm.Source,
+                AddedDate = DateTime.Now,
+                Book = book
+            };
+            _bookCopies.Add(copy);
+        }
+    }
+
     public IEnumerable<BookListViewModel> GetBooks()
     {
         return _books.Select(b => new BookListViewModel

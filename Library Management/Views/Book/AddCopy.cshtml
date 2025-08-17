@@ -1,0 +1,36 @@
+@model Library_Management.Models.AddBookCopyViewModel
+
+@{
+    ViewData["Title"] = "Add Book Copies";
+}
+
+<h2 class="mb-4">Add Copies</h2>
+<form asp-action="AddCopy" method="post">
+    <input type="hidden" asp-for="BookId" />
+    <div class="mb-3">
+        <label asp-for="NumberOfCopies" class="form-label">Number of Copies</label>
+        <input asp-for="NumberOfCopies" class="form-control" min="1" />
+        <span asp-validation-for="NumberOfCopies" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="CoverImageUrl" class="form-label">Cover Image URL</label>
+        <input asp-for="CoverImageUrl" class="form-control" />
+        <span asp-validation-for="CoverImageUrl" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Condition" class="form-label">Condition</label>
+        <input asp-for="Condition" class="form-control" />
+        <span asp-validation-for="Condition" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Source" class="form-label">Source</label>
+        <input asp-for="Source" class="form-control" />
+        <span asp-validation-for="Source" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Copies</button>
+    <a asp-action="Details" asp-route-id="@Model.BookId" class="btn btn-secondary ms-2">Cancel</a>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

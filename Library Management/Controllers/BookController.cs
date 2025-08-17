@@ -16,13 +16,23 @@ namespace Library_Management.Controllers
             return View();
         }
 
-     
+        [HttpPost]
+        public IActionResult Add(AddBookViewModel vm)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(vm);
+            }
+
+            BookService.Instance.AddBook(vm);
+            return RedirectToAction("Index");
+        }
+
         public IActionResult EditModal(Guid id)
         {
             var editBookViewModel = BookService.Instance.GetBookById(id);
             if (editBookViewModel == null) return NotFound();
 
-          
             return PartialView("_EditBookPartial", editBookViewModel);
         }
 
@@ -43,7 +53,6 @@ namespace Library_Management.Controllers
 
         public IActionResult DeleteModal(Guid id)
         {
-            
             return PartialView("_DeletePartial");
         }
 
@@ -60,7 +69,5 @@ namespace Library_Management.Controllers
             var book = BookService.Instance.GetBooks().First(b => b.BookId == id);
             return View(book);
         }
-
-
     }
 }

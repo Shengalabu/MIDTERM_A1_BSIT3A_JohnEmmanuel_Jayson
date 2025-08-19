@@ -73,3 +73,92 @@ body {
 .delete-btn {
     color: #dc3545;
 }
+
+
+/* Container */
+.container h1 {
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+/* Book Cards */
+.book-card {
+    border-radius: 1rem;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #eee;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+}
+
+    .book-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    }
+
+/* Book Actions */
+.book-actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 6px;
+    z-index: 2;
+}
+
+/* Cover */
+.book-cover {
+    height: 220px;
+    object-fit: cover;
+    background-color: #f8f9fa;
+}
+
+/* Text */
+.book-title {
+    font-weight: 600;
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.book-author {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.book-meta {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* Add Book Card */
+.add-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    border: 2px dashed #0d6efd;
+    background: #f8faff;
+    transition: background 0.2s ease;
+    height: 100%;
+    text-align: center;
+}
+
+    .add-card:hover {
+        background: #eaf2ff;
+    }
+
+.add-card-content i {
+    font-size: 3rem;
+    color: #0d6efd;
+}
+
+.add-card-content p {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #555;
+}
